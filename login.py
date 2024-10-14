@@ -64,6 +64,23 @@ def main():
             break
         else:
             print("Invalid choice, please select again.")
+ # Simple login success screen
+def login_success(user_name):
+print(f"\nLogin successful!  Welcome, {user_name}.")
+print("1. View Account Details")
+print("2. Logout")
+
+while True:
+choice = input("Enter your choice (1/2): ")
+if choice == '1':
+print(f"\nAccount Details for {user_name}:")
+# User details can be extended here
+break
+elif choice == '2':
+print(f"\nLogging out, goodbye {user_name}.")
+break
+else:
+print("Invalid choice, please try again.")
 
 # Run the program
 if __name__ == "__main__":
