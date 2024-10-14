@@ -22,6 +22,42 @@ def register():
     print("Registration successful! You can now log in.")
     return True
 
+# Function to verify user login
+def verify_login(username, password):
+for user in userlist:
+if user["username"] == username:
+# Check if your account is locked
+if user["locked"]:
+print(f"User {username} is locked due to too many failed attempts.")
+return None
+
+# Check that the username and password match
+if user["password"] == password:
+# Reset attempts
+user["attempts"] = 0
+return user["name"]
+else:
+# Increase the number of failed attempts
+user["attempts"] += 1
+if user["attempts"] >= 3:
+user["locked"] = True
+print(f"User {username} is now locked due to too many failed attempts.")
+return None
+return None
+
+# Login features, including verification, count limits and account lockout
+def login():
+uname = input("Username: ")
+upwd = input("Password: ")
+
+user_name = verify_login(uname, upwd)
+if user_name:
+print(f"Login successful!  Welcome, {user_name}.")
+return True
+else:
+print("Login failed.")
+return False
+
 # Login function
 def login():
     msg = "failed"
