@@ -21,6 +21,32 @@ def register():
     userlist.append(new_user)
     print("Registration successful! You can now log in.")
     return True
+    # 修复后的用户列表显示功能
+def display_users():
+    print("Current user list:")
+    for user in userlist:
+        print(f"Username: {user['username']}, Name: {user['name']}, Locked: {user['locked']}, Attempts: {user['attempts']}")
+
+# Main function to run the program
+def main():
+    while True:
+        print("\nWelcome! Please choose an option:")
+        print("1. Login")
+        print("2. Display user list")
+        print("3. Exit")
+        
+        choice = input("Enter your choice (1/2/3): ")
+        
+        if choice == '1':
+            login()  # Assuming the login function is already defined
+        elif choice == '2':
+            display_users()  # Display user list
+        elif choice == '3':
+            print("Exiting the program. Goodbye!")
+            break
+        else:
+            print("Invalid choice, please select again.")
+
 
 # Login function
 def login():
