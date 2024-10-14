@@ -126,3 +126,49 @@ def mainMenu():
 
 # Run the program
 mainMenu()
+class MenuItem:
+    def __init__(self, name, price):
+        self.name = name
+        self.price = price
+
+    def update_price(self, new_price):
+        self.price = new_price
+        print(f"{self.name} 的价格已更新为 {self.price:.2f} 元")
+
+
+class Menu:
+    def __init__(self):
+        self.items = []
+
+    def add_item(self, item):
+        self.items.append(item)
+
+    def display_menu(self):
+        print("当前菜单：")
+        for item in self.items:
+            print(f"{item.name}: {item.price:.2f} 元")
+
+    def update_item_price(self, item_name, new_price):
+        for item in self.items:
+            if item.name == item_name:
+                item.update_price(new_price)
+                return
+        print(f"未找到菜品: {item_name}")
+
+
+# 示例用法
+if __name__ == "__main__":
+    menu = Menu()
+
+    # 添加菜品
+    menu.add_item(MenuItem("宫保鸡丁", 58.00))
+    menu.add_item(MenuItem("麻婆豆腐", 36.00))
+
+    # 显示当前菜单
+    menu.display_menu()
+
+    # 更新菜品价格
+    menu.update_item_price("宫保鸡丁", 65.00)
+
+    # 显示更新后的菜单
+    menu.display_menu()
